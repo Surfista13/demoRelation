@@ -1,33 +1,27 @@
 package fr.eni.demorelation.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "PERSONNE_OTO")
+@Table(name = "PERSONNE_OTM")
 public class Personne {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
     private String prenom;
-    @OneToOne
-    private Adresse adresse;
+    @ManyToOne
+    private Civilite civilite;
 
     public Personne() {
+
 }
 
-    public Personne(String nom, String prenom, Adresse adresse) {
+    public Personne(String nom, String prenom, Civilite civilite) {
         this.nom = nom;
         this.prenom = prenom;
-        this.adresse = adresse;
-    }
-
-    public Adresse getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(Adresse adresse) {
-        this.adresse = adresse;
+        this.civilite = civilite;
     }
 
     public int getId() {
@@ -52,5 +46,16 @@ public class Personne {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Personne{");
+        sb.append("id=").append(id);
+        sb.append(", nom='").append(nom).append('\'');
+        sb.append(", prenom='").append(prenom).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

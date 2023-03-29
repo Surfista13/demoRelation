@@ -3,7 +3,7 @@ package fr.eni.demorelation.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ADRESSE_OTO")
+@Table(name = "ADRESSE_OTM")
 public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
